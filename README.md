@@ -1,12 +1,13 @@
 # E-Commerce Price Tracker Bot
 
-This E-Commerce Price Tracker Bot monitors product prices on e-commerce websites like Amazon and eBay. It sends notifications via email and SMS when the price of a product drops significantly below the average price.
+This E-Commerce Price Tracker Bot monitors product prices and availability on e-commerce websites like Amazon and eBay. It sends notifications via email and SMS when the price of a product drops significantly below the average price or when a product that was out of stock becomes available again.
 
 ## Features
 
 - Scrapes product data from e-commerce websites.
 - Calculates the average price of products.
 - Sends email and SMS notifications when a deal is found.
+- Sends email and SMS notifications when a product becomes available.
 - Configurable via a JSON file.
 
 ## Requirements
@@ -31,12 +32,12 @@ This E-Commerce Price Tracker Bot monitors product prices on e-commerce websites
      ```
 
 3. **Create a Configuration File**:
-   - Create a file named `config.json` in the same directory as the script and add the following content, replacing the placeholders with your actual values:
+   - Create a file named [config.json](http://_vscodecontentref_/0) in the same directory as the script and add the following content, replacing the placeholders with your actual values:
      ```json
      {
          "urls": [
-             "Pick a URL",
-             "Pick A URL"
+             "https://www.amazon.com/s?k=laptops",
+             "https://www.ebay.com/sch/i.html?_nkw=laptops"
          ],
          "threshold_price": 500.00,
          "check_interval": 3600,
@@ -68,8 +69,8 @@ This E-Commerce Price Tracker Bot monitors product prices on e-commerce websites
      python ecom_price_tracker.py
      ```
 
-3. **Monitor Prices**:
-   - The script will continuously check the prices of the products at the specified URLs and send email and SMS notifications if the prices drop significantly below the average price.
+3. **Monitor Prices and Availability**:
+   - The script will continuously check the prices and availability of the products at the specified URLs and send email and SMS notifications if the prices drop significantly below the average price or if the products become available.
 
 ### Example Output
 Fetching data from https://www.amazon.com/s?k=laptops&page=1 Fetching data from https://www.amazon.com/s?k=laptops&page=2 Fetching data from https://www.amazon.com/s?k=laptops&page=3 Fetching data from https://www.ebay.com/sch/i.html?_nkw=laptops&page=1 Fetching data from https://www.ebay.com/sch/i.html?_nkw=laptops&page=2 Fetching data from https://www.ebay.com/sch/i.html?_nkw=laptops&page=3 Deal found! Laptop XYZ is now $350.00 Email sent for Laptop XYZ at $350.00 SMS sent for Laptop XYZ at $350.00
